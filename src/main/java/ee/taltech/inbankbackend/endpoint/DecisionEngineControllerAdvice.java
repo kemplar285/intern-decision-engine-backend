@@ -13,8 +13,8 @@ public class DecisionEngineControllerAdvice {
 
     private final DecisionResponse response;
 
-    public DecisionEngineControllerAdvice(DecisionResponse response) {
-        this.response = response;
+    public DecisionEngineControllerAdvice() {
+        this.response = new DecisionResponse();
         response.setLoanAmount(null);
         response.setLoanPeriod(null);
     }
@@ -45,7 +45,7 @@ public class DecisionEngineControllerAdvice {
 
     @ExceptionHandler(value = { Exception.class })
     public ResponseEntity<DecisionResponse> handleOtherExceptions(Exception ex) {
-        response.setErrorMessage(ex.getMessage());
+        response.setErrorMessage("An unexpected error occurred");
         return ResponseEntity.internalServerError().body(response);
     }
 

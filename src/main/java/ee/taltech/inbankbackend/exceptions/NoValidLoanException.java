@@ -3,7 +3,7 @@ package ee.taltech.inbankbackend.exceptions;
 /**
  * Thrown when no valid loan is found.
  */
-public class NoValidLoanException extends Throwable {
+public class NoValidLoanException extends RuntimeException {
     private final String message;
     private final Throwable cause;
 

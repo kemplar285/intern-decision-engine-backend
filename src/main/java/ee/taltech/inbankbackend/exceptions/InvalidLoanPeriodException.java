@@ -3,7 +3,7 @@ package ee.taltech.inbankbackend.exceptions;
 /**
  * Thrown when requested loan period is invalid.
  */
-public class InvalidLoanPeriodException extends Throwable {
+public class InvalidLoanPeriodException extends RuntimeException {
     private final String message;
     private final Throwable cause;
 
