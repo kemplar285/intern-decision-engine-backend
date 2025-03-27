@@ -1,9 +1,6 @@
 package ee.taltech.inbankbackend.endpoint;
 
-import ee.taltech.inbankbackend.exceptions.InvalidLoanAmountException;
-import ee.taltech.inbankbackend.exceptions.InvalidLoanPeriodException;
-import ee.taltech.inbankbackend.exceptions.InvalidPersonalCodeException;
-import ee.taltech.inbankbackend.exceptions.NoValidLoanException;
+import ee.taltech.inbankbackend.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,6 +39,13 @@ public class DecisionEngineControllerAdvice {
         response.setErrorMessage(ex.getMessage());
         return ResponseEntity.ok().body(response);
     }
+
+    @ExceptionHandler(value = { InvalidCustomerAgeException.class })
+    public ResponseEntity<DecisionResponse> InvalidCustomerAgeException(InvalidCustomerAgeException ex) {
+        response.setErrorMessage(ex.getMessage());
+        return ResponseEntity.ok().body(response);
+    }
+
 
     @ExceptionHandler(value = { Exception.class })
     public ResponseEntity<DecisionResponse> handleOtherExceptions(Exception ex) {
