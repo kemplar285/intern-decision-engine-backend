@@ -35,7 +35,6 @@ public class DecisionEngineController {
             throws InvalidLoanPeriodException, NoValidLoanException, InvalidPersonalCodeException, InvalidLoanAmountException {
         DecisionResponse response = new DecisionResponse();
 
-
         Decision decision = decisionEngine.calculateApprovedLoan(request.getPersonalCode(), request.getLoanAmount(), request.getLoanPeriod());
         response.setLoanAmount(decision.getLoanAmount());
         response.setLoanPeriod(decision.getLoanPeriod());
