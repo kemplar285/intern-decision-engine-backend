@@ -30,6 +30,7 @@ It's nice to see custom exceptions used.
 Bads:
 1. All decision engine related logic was aggregated into one big class.
 It clearly violates SOLID principles (SRP, OCP).
-2. The lack of communication. Some ideas used in the implementation were not mentioned in the task and it would have been nice to see explanation of decision made in the readme. This includes returned loan amounts and periods from tests.
+2. The lack of communication. Some ideas used in the implementation were not mentioned in the task, and it would have been nice to see explanation of decision made in the readme. This includes returned loan amounts and periods from tests.
 3. Credit score calculation formula is invalid
 4. Some constants contradicted the requirements
+5. Missed opportunity to use Spring Validation. Though it might not be necessary for MVP, so I didn't add anything as well.
