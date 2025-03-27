@@ -36,11 +36,8 @@ public class DecisionEngine {
     public Decision calculateApprovedLoan(String personalCode, Long loanRequestedAmount, int loanRequestedPeriod)
             throws InvalidPersonalCodeException, InvalidLoanAmountException, InvalidLoanPeriodException,
             NoValidLoanException {
-        try {
-            ValidationService.verifyInputs(personalCode, loanRequestedAmount, loanRequestedPeriod);
-        } catch (Exception e) {
-            return new Decision(null, null, e.getMessage());
-        }
+
+        ValidationService.verifyInputs(personalCode, loanRequestedAmount, loanRequestedPeriod);
 
         creditModifier = CreditInfoService.getCreditModifier(personalCode);
 

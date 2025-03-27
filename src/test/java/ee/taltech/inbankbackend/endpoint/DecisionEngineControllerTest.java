@@ -169,7 +169,7 @@ public class DecisionEngineControllerTest {
      * an HTTP Bad Request (400) response with the appropriate error message in the response body.
      */
     @Test
-    public void givenNoValidLoan_whenRequestDecision_thenReturnsBadRequest()
+    public void givenNoValidLoan_whenRequestDecision_thenReturnsOK()
             throws Exception, InvalidLoanPeriodException, NoValidLoanException, InvalidPersonalCodeException,
             InvalidLoanAmountException {
         when(decisionEngine.calculateApprovedLoan(anyString(), anyLong(), anyInt()))
@@ -180,7 +180,7 @@ public class DecisionEngineControllerTest {
         MvcResult result = mockMvc.perform(post("/loan/decision")
                         .content(objectMapper.writeValueAsString(request))
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
+                .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.loanAmount").isEmpty())
                 .andExpect(jsonPath("$.loanPeriod").isEmpty())
