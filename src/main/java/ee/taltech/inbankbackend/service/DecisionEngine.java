@@ -11,11 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A service class that provides a method for calculating an approved loan amount and period for a customer.
- * The loan amount is calculated based on the customer's credit modifier,
- * which is determined by the last four digits of their ID code.
- */
+
 @Service
 public class DecisionEngine {
 
@@ -84,7 +80,14 @@ public class DecisionEngine {
         return 0;
     }
 
-
+    /**
+     * Calculates suggested loan amount and loan period in months. Generally tries to suggest the best offer based on credit score.
+     * This method checks if the customer can get a bigger offer for the same period,
+     * or to suggest a suitable period near requested amount and to offer the maximum money possible for this period
+     * @param loanRequestedPeriod
+     * @param loanRequestedAmount
+     * @return Returns acceptable loan amount and period
+     */
     private Map<String, Integer> suggestedLoanAmountAndPeriod(Integer loanRequestedPeriod, Long loanRequestedAmount){
         Map<String, Integer> suggestedLoanAmountAndPeriod = new HashMap<>();
         int loanAmount = 0;

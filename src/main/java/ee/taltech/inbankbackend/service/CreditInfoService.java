@@ -3,8 +3,24 @@ package ee.taltech.inbankbackend.service;
 import ee.taltech.inbankbackend.config.DecisionEngineConstants;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * A service class that provides a method for calculating credit score of an offer.
+ * customer's credit modifier is determined by the last four digits of their ID code.
+ */
+
 @Service
 public class CreditInfoService {
+
+
+    /**
+     *
+     * @param creditModifier Customer credit modifier. Mock implementation is provided in getCreditModifier.
+     * @param loanAmount Loan amount. 2000 <= Amount <= 10000
+     * @param loanPeriod Loan period. 12 <= Period <= 48
+     * @return Double credit modifier. A value less than 0.1 will be rejected during loan calculation.
+     */
+
 
     protected static double calculateCreditScore(int creditModifier, int loanAmount, int loanPeriod) {
         return (((double) creditModifier / (double) loanAmount) * loanPeriod) / 10;
